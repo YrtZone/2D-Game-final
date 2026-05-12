@@ -13,8 +13,11 @@ public class UIManager : MonoBehaviour
     private int quantidadeItens = 0;
 
     [Header("Barra de Velocidade")]
-    
     public Image barraEnergiaUI; 
+
+    [Header("Avisos de Status")]
+    
+    public TextMeshProUGUI textoStatus; 
 
     public void RemoverUmRaio()
     {
@@ -32,7 +35,6 @@ public class UIManager : MonoBehaviour
     {
         if (barraEnergiaUI != null)
         {
-           
             barraEnergiaUI.fillAmount = atual / maximo;
         }
     }
@@ -41,5 +43,16 @@ public class UIManager : MonoBehaviour
     {
         quantidadeItens++;
         if (textoItens != null) textoItens.text = "Itens: " + quantidadeItens;
+    }
+
+    
+    public void MostrarAviso(string mensagem)
+    {
+        if (textoStatus != null) textoStatus.text = mensagem;
+    }
+
+    public void LimparAviso()
+    {
+        if (textoStatus != null) textoStatus.text = "";
     }
 }
