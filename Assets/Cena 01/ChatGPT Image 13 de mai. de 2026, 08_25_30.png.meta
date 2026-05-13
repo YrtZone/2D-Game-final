@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5262cd3eddf04f3448e070c201d9d9e4
+guid: 3608f6b15dff51842b67bf32d937e224
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4569364746692835557
-    second: ChatGPT Image 6 de mai. de 2026, 20_41_02_0
+      213: 8408379425209418689
+    second: ChatGPT Image 13 de mai. de 2026, 08_25_30_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image 6 de mai. de 2026, 20_41_02_0
+      name: ChatGPT Image 13 de mai. de 2026, 08_25_30_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1187
-        height: 1325
+        width: 1683
+        height: 935
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b174e20f8fa5690c0800000000000000
-      internalID: -4569364746692835557
+      spriteID: 1c38f48a98090b470800000000000000
+      internalID: 8408379425209418689
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT Image 6 de mai. de 2026, 20_41_02_0: -4569364746692835557
+      ChatGPT Image 13 de mai. de 2026, 08_25_30_0: 8408379425209418689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

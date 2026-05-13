@@ -39,8 +39,6 @@ public class PlayerHealth : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over! Reiniciando...");
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    
     }
 }
