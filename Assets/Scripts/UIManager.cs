@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Telas de Finalização")]
+    [Header("Painéis de Interface")]
+    public GameObject painelTutorial; 
     public GameObject painelVitoria; 
     public GameObject painelDerrota; 
 
@@ -23,12 +24,26 @@ public class UIManager : MonoBehaviour
     [Header("Avisos de Status")]
     public TextMeshProUGUI textoStatus; 
 
-    
-    void Start()
+    void Awake()
     {
-        Time.timeScale = 1f; 
+        
+        Time.timeScale = 0f;
+        if (painelTutorial != null) painelTutorial.SetActive(true);
         if (painelVitoria != null) painelVitoria.SetActive(false);
         if (painelDerrota != null) painelDerrota.SetActive(false);
+    }
+
+    
+    public void ComecarJogo()
+    {
+        Time.timeScale = 1f;
+        if (painelTutorial != null) painelTutorial.SetActive(false);
+    }
+
+    public void VoltarAoMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("NomeDaSuaCenaDeMenu"); 
     }
 
     public void SomarPontos(int valor)
@@ -37,31 +52,23 @@ public class UIManager : MonoBehaviour
     }
 
     public void RemoverUmRaio()
-{
-    for (int i = listaRaios.Count - 1; i >= 0; i--)
     {
-        if (listaRaios[i].activeSelf)
+        for (int i = listaRaios.Count - 1; i >= 0; i--)
         {
-            listaRaios[i].SetActive(false);
-            
-            if (i == 0) 
+            if (listaRaios[i].activeSelf)
             {
-                if (painelDerrota != null)
+                listaRaios[i].SetActive(false);
+                if (i == 0)
                 {
-                    painelDerrota.SetActive(true);
-                    Time.timeScale = 0f; 
+                    if (painelDerrota != null)
+                    {
+                        painelDerrota.SetActive(true);
+                        Time.timeScale = 0f;
+                    }
                 }
+                return; 
             }
-            return; 
         }
-    }
-}
-
-   
-    public void VoltarAoMenu()
-    {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("NomeDaSuaCenaDeMenu"); 
     }
 
     public void AtualizarBarraEnergia(float atual, float maximo)
@@ -83,9 +90,6 @@ public class UIManager : MonoBehaviour
             {
                 painelVitoria.SetActive(true);
                 Time.timeScale = 0f; 
-                
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
         }
     }
