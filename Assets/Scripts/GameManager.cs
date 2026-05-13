@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem; // Para o novo Input System
+using UnityEngine.InputSystem; 
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     [Header("Painel (Apenas para Cena de Jogo)")]
     public GameObject painelPause;
 
+    [Header("Configuração de Áudio")]
+    public AudioSource musicaFundo;
+
     public static string cenaParaCarregar = "Cena_Floresta";
     private bool jogoPausado = false;
 
     void Start()
     {
-        // Se estivermos na cena do Menu, configura a UI
         if (painelInicial != null && painelMapas != null)
         {
             IrParaMenuInicial();
@@ -25,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // O Pause só funciona se houver um painel de pause atribuído nesta cena
         if (painelPause != null && Keyboard.current.pKey.wasPressedThisFrame)
         {
             if (jogoPausado) RetomarJogo();
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- MÉTODOS DE MENU ---
     public void IrParaSelecaoDeMapas()
     {
         if (painelInicial) painelInicial.SetActive(false);
@@ -48,11 +48,10 @@ public class GameManager : MonoBehaviour
 
     public void SelecionarMapa(string nomeDaCena)
     {
-        cenaParaCarregar = nomeDaCena;
-        IrParaMenuInicial();
+        cenaParaCarregar = nomeDaCena; 
+        SceneManager.LoadScene(nomeDaCena); 
     }
 
-    // --- MÉTODOS DE JOGO (PAUSE) ---
     public void PausarJogo()
     {
         painelPause.SetActive(true);
@@ -73,14 +72,26 @@ public class GameManager : MonoBehaviour
     }
 
     public void VoltarAoMenu()
-{
-    Time.timeScale = 1f; 
-    
-    SceneManager.LoadScene("MENU"); 
-}
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("MENU"); 
+    }
+
+    public void AlternarMusica()
+    {
+        if (musicaFundo == null) return;
+        if (musicaFundo.isPlaying) musicaFundo.Pause();
+        else musicaFundo.UnPause();
+    }
 
     public void Sair()
-    {
-        Application.Quit();
-    }
+{
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #elif UNITY_WEBGL
+        Application.ExternalEval("window.close();");
+    #else
+        Application.Quit(); 
+    #endif
+}
 }
